@@ -42,13 +42,13 @@ def datos_Json(json):
     return n_Telefono,user_name,tipo_texto,cuerpo,timestamp
 
 #No ponemos global variable por que no la modificamos
-def foto_a_cloudflare(cuerpo,fecha):
+def foto_a_cloudflare(cuerpo,fecha,nTelefono):
 
     ruta_foto=cuerpo[0]
     id_foto=cuerpo[1]
 
     #Cambiar por ruta actual para fotos
-    nombre_foto=f"facturas/factura_{fecha}_{id_foto}.jpg"
+    nombre_foto=f"facturas/factura_{nTelefono}_{fecha}_{id_foto}.jpg"
     preguntaFoto= requests.get(ruta_foto, headers={"Authorization": f"Bearer {token_permanente_meta}"})
 
     if preguntaFoto.status_code == 200:
@@ -104,7 +104,7 @@ def webhook():
 
         if tipo_texto == "image":
             fecha=timestamp_a_Fecha(timestamp)
-            foto_a_cloudflare(cuerpo,fecha)
+            foto_a_cloudflare(cuerpo,fecha,n_Telefono)
 
 
     else:

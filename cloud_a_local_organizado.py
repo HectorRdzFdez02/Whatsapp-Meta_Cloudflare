@@ -7,7 +7,7 @@ load_dotenv()
 #Rutas carpetas
 ruta_base=os.getenv("RUTA_BASE")
 ruta_Descargado=ruta_base+os.getenv("RUTA_DESCARGADO")
-ruta_Fotos_Raw=ruta_base+os.getenv("RUTA_FOTOS_RAW")
+ruta_Fotos_Raw=os.getenv("RUTA_FOTOS_RAW")
 ruta_Cloudflare=os.getenv("RUTA_CLOUDFLARE")
 
 #Cloudflare
